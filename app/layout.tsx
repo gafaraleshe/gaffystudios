@@ -1,47 +1,63 @@
-import type { Metadata } from "next";
-import { Syne, Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Archivo, DM_Serif_Display, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import CustomCursor from "@/components/ui/CustomCursor";
-import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
 
-const syne = Syne({
-  variable: "--font-syne",
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-inter",
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["600", "700", "800", "900"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const dmSerif = DM_Serif_Display({
+  weight: "400",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-dm-serif",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "GaffyStudios — Creative Agency | Cinematography & Visual Storytelling",
+  title: "Gaffy Studios — Creative Studio",
   description:
-    "London-based creative agency specializing in cinematography, photography, and visual storytelling. We craft unforgettable brand experiences.",
-  keywords: ["creative agency", "cinematography", "photography", "brand films", "London", "visual storytelling", "creative direction"],
+    "Gaffy Studios Ltd — the creative studio behind SHOTBYGAFAR and Gafar Aleshe. Video production, photography, web development, and digital products. Based in Portsmouth, UK.",
+  icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: "GaffyStudios — Creative Agency",
-    description: "We craft visual stories that demand attention. London-based creative studio.",
-    type: "website",
+    title: "Gaffy Studios — Creative Studio",
+    description:
+      "The creative studio behind SHOTBYGAFAR and Gafar Aleshe. Video production, photography, web development, and digital products.",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={`${syne.variable} ${inter.variable}`}>
-      <body>
-        <SmoothScrollProvider>
-          <CustomCursor />
-          {children}
-        </SmoothScrollProvider>
+    <html lang="en">
+      <body
+        className={`${inter.variable} ${archivo.variable} ${dmSerif.variable} ${geistMono.variable}`}
+      >
+        {children}
       </body>
     </html>
   );
