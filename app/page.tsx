@@ -17,6 +17,7 @@ import {
   Paperclip,
 } from "lucide-react";
 import { InstagramIcon } from "@/components/LinkIcons";
+import { InstagramFeed } from "@/components/InstagramFeed";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 
 const PROFILE_IMG = "/assets/gafar-profile.jpg";
@@ -492,6 +493,11 @@ export default function Home() {
             </a>
           </div>
         </SectionCard>
+
+        {/* ── Instagram embed ── */}
+        <Reveal>
+          <InstagramFeed />
+        </Reveal>
 
         <SiteFooter />
       </main>
