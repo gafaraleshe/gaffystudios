@@ -129,7 +129,7 @@ const features = [
   },
   {
     label: "LinkVault",
-    description: "Link management platform — in progress, launching soon",
+    description: "All your affiliate links, one storefront — earn worldwide",
     href: "/#products",
     Icon: ServerIcon,
   },
