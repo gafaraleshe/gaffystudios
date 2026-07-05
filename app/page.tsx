@@ -66,11 +66,11 @@ const products = [
   },
   {
     title: "LinkVault",
-    subtitle: "Link Management Platform",
+    subtitle: "Affiliate Link Storefront",
     status: "In Progress",
     description:
-      "Save, organise, and share your links in one place. Currently in active development — launching soon under the Gaffy Studios product line.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+      "The storefront for influencers — a kit.co alternative that gathers every affiliate link in one page. Smart geo-routing sends each visitor to the right regional link so creators earn commission worldwide, with per-country click analytics.",
+    tags: ["Next.js 16", "Supabase", "PostgreSQL", "Drizzle"],
     href: null,
   },
 ];
