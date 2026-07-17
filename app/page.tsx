@@ -62,7 +62,7 @@ const products = [
     description:
       "A DaVinci Resolve plugin bringing After Effects–style animation control into Resolve — one-click motion presets, a bezier easing curve editor, and speed-ramp tools — paired with fully on-device auto-subtitling (no cloud processing), a swappable local AI layer for editing assistance, and a paid enterprise API with MCP integration for AI agents.",
     tags: ["Lua / Fusion", "Python", "Tauri", "Local AI"],
-    href: "https://github.com/gafaraleshe/hermite",
+    href: "https://hermite-pearl.vercel.app",
   },
   {
     title: "InvoiceFlow",
