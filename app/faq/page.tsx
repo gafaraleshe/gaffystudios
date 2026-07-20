@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/motion";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 
 export const metadata: Metadata = {
@@ -62,6 +63,7 @@ export default function FaqPage() {
 
       <main className="mx-auto max-w-2xl pb-14">
         {/* Intro card */}
+        <Reveal y={24}>
         <section
           className="relative rounded-md border border-neutral-900/10 bg-[#f4f3ec] px-6 py-8 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.55)] sm:px-10 sm:py-10"
           style={DOTTED}
@@ -85,12 +87,13 @@ export default function FaqPage() {
             .
           </p>
         </section>
+        </Reveal>
 
         {/* FAQ cards */}
         <div className="mt-4 space-y-3">
           {faqs.map((f, i) => (
+            <Reveal key={f.q} delay={Math.min(i * 0.06, 0.3)}>
             <details
-              key={f.q}
               className="group rounded-md border border-neutral-900/10 bg-[#f4f3ec] shadow-sm transition-shadow hover:shadow-md"
               style={DOTTED}
               open={i === 0}
@@ -112,6 +115,7 @@ export default function FaqPage() {
                 {f.a}
               </p>
             </details>
+            </Reveal>
           ))}
         </div>
 
