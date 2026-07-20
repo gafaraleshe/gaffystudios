@@ -7,6 +7,15 @@
  */
 
 import { motion } from "framer-motion";
+import {
+  Reveal,
+  heroRise,
+  hoverLift,
+  hoverPop,
+  rise,
+  riseInView,
+  tapePop,
+} from "@/components/motion";
 import { ArrowUpRight, Play } from "lucide-react";
 import { InstagramIcon } from "@/components/LinkIcons";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
@@ -82,40 +91,46 @@ export default function Portfolio() {
       <main className="mx-auto max-w-2xl pb-14">
         {/* ── Intro card ── */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          {...heroRise}
           className="relative rounded-md border border-neutral-900/10 bg-[#f4f3ec] px-6 py-8 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.55)] sm:px-10 sm:py-10"
           style={DOTTED}
         >
           <CornerMarks />
-          <span className="pointer-events-none absolute -top-3 left-1/2 h-7 w-24 -translate-x-1/2 -rotate-3 bg-stone-300/50 shadow-sm" />
-          <span className="pointer-events-none absolute -right-3 bottom-12 h-6 w-16 rotate-6 bg-amber-200/40 shadow-sm" />
+          <motion.span
+            {...tapePop(-3, 0.9)}
+            className="pointer-events-none absolute -top-3 left-1/2 h-7 w-24 -translate-x-1/2 bg-stone-300/50 shadow-sm"
+          />
+          <motion.span
+            {...tapePop(6, 1.05)}
+            className="pointer-events-none absolute -right-3 bottom-12 h-6 w-16 bg-amber-200/40 shadow-sm"
+          />
 
-          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-neutral-500">
-            Portfolio:
-          </p>
-          <h1 className="mt-1 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-neutral-900 sm:text-5xl">
-            Video
-            <br />
-            Production
-          </h1>
-          <p className="mt-4 max-w-md font-mono text-[13px] leading-relaxed text-neutral-700">
-            Weddings, brand films, events, and music videos — shot, graded, and
-            edited in-house by Gaffy Studios. Bold, authentic storytelling from
-            first frame to final cut.
-          </p>
+          <motion.div {...rise(0.35)}>
+            <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-neutral-500">
+              Portfolio:
+            </p>
+            <h1 className="mt-1 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-neutral-900 sm:text-5xl">
+              Video
+              <br />
+              Production
+            </h1>
+            <p className="mt-4 max-w-md font-mono text-[13px] leading-relaxed text-neutral-700">
+              Weddings, brand films, events, and music videos — shot, graded,
+              and edited in-house by Gaffy Studios. Bold, authentic
+              storytelling from first frame to final cut.
+            </p>
+          </motion.div>
 
           <div className="mt-6 grid grid-cols-3 gap-3 border-t border-dashed border-neutral-900/15 pt-5">
-            {stats.map(s => (
-              <div key={s.label}>
+            {stats.map((s, i) => (
+              <motion.div {...rise(0.5 + i * 0.12)} key={s.label}>
                 <p className="font-display text-2xl font-extrabold tracking-tight text-neutral-900">
                   {s.value}
                 </p>
                 <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-neutral-500">
                   {s.label}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.section>
@@ -124,13 +139,12 @@ export default function Portfolio() {
         <div className="mt-4 space-y-3">
           {works.map((w, i) => (
             <motion.a
+              {...riseInView(Math.min(i * 0.08, 0.32))}
+              {...hoverLift}
               key={w.title}
               href={w.videoUrl}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.06 * i }}
               className="group block overflow-hidden rounded-md border border-neutral-900/10 bg-[#f4f3ec] shadow-sm transition-shadow hover:shadow-md"
               style={DOTTED}
             >
@@ -164,6 +178,7 @@ export default function Portfolio() {
         </div>
 
         {/* ── CTA card ── */}
+        <Reveal>
         <section
           className="relative mt-4 rounded-md border border-neutral-900/10 bg-[#f4f3ec] px-6 py-7 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.45)] sm:px-8 sm:py-9"
           style={DOTTED}
@@ -179,7 +194,8 @@ export default function Portfolio() {
             SHOTBYGAFAR.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
-            <a
+            <motion.a
+              {...hoverPop}
               href="https://instagram.com/gaffystudios"
               target="_blank"
               rel="noreferrer"
@@ -187,8 +203,9 @@ export default function Portfolio() {
             >
               <InstagramIcon />
               @gaffystudios
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              {...hoverPop}
               href="https://shotbygafar.com"
               target="_blank"
               rel="noreferrer"
@@ -196,15 +213,17 @@ export default function Portfolio() {
             >
               SHOTBYGAFAR
               <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              {...hoverPop}
               href="mailto:contact@shotbygafar.com"
               className="flex items-center gap-2 rounded-md border border-neutral-900/20 bg-white px-4 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-wide text-neutral-900 transition-colors hover:bg-neutral-50"
             >
               Book a Shoot
-            </a>
+            </motion.a>
           </div>
         </section>
+        </Reveal>
 
         <SiteFooter />
       </main>
