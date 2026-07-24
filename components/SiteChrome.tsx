@@ -1,7 +1,12 @@
+"use client";
+
 /*
  * Shared top bar + footer for every page.
  * Same filing-card chrome as gafaraleshe.com, on the black canvas.
  */
+
+import { motion } from "framer-motion";
+import { NameReveal, fadeIn } from "@/components/motion";
 
 const NAV = [
   { label: "Portfolio", href: "/portfolio" },
@@ -10,12 +15,15 @@ const NAV = [
 
 export function SiteHeader({ active }: { active?: string }) {
   return (
-    <header className="mx-auto mb-8 flex max-w-2xl items-center justify-between sm:mb-10">
+    <motion.header
+      {...fadeIn(0.15)}
+      className="mx-auto mb-8 flex max-w-2xl items-center justify-between sm:mb-10"
+    >
       <a
         href="/"
         className="font-mono text-sm font-semibold uppercase tracking-[0.2em] text-white"
       >
-        Gaffy Studios
+        <NameReveal lines={["Gaffy Studios"]} delay={1.3} stagger={0.04} blur={4} />
       </a>
       <div className="flex items-center gap-1">
         {NAV.filter(n => n.href !== active).map(n => (
@@ -34,7 +42,7 @@ export function SiteHeader({ active }: { active?: string }) {
           Links ↗
         </a>
       </div>
-    </header>
+    </motion.header>
   );
 }
 
