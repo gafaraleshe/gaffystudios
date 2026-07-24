@@ -8,6 +8,7 @@
 
 import { motion } from "framer-motion";
 import {
+  NameReveal,
   chipPop,
   clipDrop,
   flipIn,
@@ -244,9 +245,7 @@ export default function Links() {
                 Studio:
               </p>
               <h1 className="mt-1 font-display text-5xl font-extrabold uppercase leading-[0.9] tracking-tight text-neutral-900 sm:text-6xl">
-                Gaffy
-                <br />
-                Studios
+                <NameReveal lines={["Gaffy", "Studios"]} />
               </h1>
             </motion.div>
 
