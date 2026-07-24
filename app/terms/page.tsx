@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Reveal } from "@/components/motion";
 import { SiteHeader, SiteFooter } from "@/components/SiteChrome";
 
 export const metadata: Metadata = {
@@ -86,6 +87,7 @@ export default function TermsPage() {
 
       <main className="mx-auto max-w-2xl pb-14">
         {/* Intro card */}
+        <Reveal y={24}>
         <section
           className="relative rounded-md border border-neutral-900/10 bg-[#f4f3ec] px-6 py-8 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.55)] sm:px-10 sm:py-10"
           style={DOTTED}
@@ -103,15 +105,17 @@ export default function TermsPage() {
             {new Date().getFullYear()}.
           </p>
         </section>
+        </Reveal>
 
         {/* Sections */}
+        <Reveal>
         <section
           className="mt-4 rounded-md border border-neutral-900/10 bg-[#f4f3ec] px-6 py-7 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.45)] sm:px-8 sm:py-9"
           style={DOTTED}
         >
           <div className="space-y-7">
-            {sections.map(s => (
-              <div key={s.title}>
+            {sections.map((s, i) => (
+              <Reveal key={s.title} delay={Math.min(i * 0.05, 0.25)}>
                 <h2 className="font-display text-lg font-bold uppercase tracking-tight text-neutral-900">
                   {s.title}
                 </h2>
@@ -125,10 +129,11 @@ export default function TermsPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
+        </Reveal>
 
         <SiteFooter />
       </main>
